@@ -1,0 +1,377 @@
+/*Navbar Css starts*/
+:root{
+    --color-brand: rgb(79,113,224);
+    --color-brand-80: rgba(79,113,224,0.8);
+    --color-body: rgb(172,177,196);
+    --color-bg-1: rgb(28,30,39);
+    --color-bg-2: rgb(38,41,53);
+    --clr-neon: hsl(317 100% 54%);
+    --clr-bg: hsl(323 21% 16%);
+}
+
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #000;
+    min-height: 200vh;
+}
+
+@keyframes logo_fade_in {
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: logo_fade_in 0.6s ease;
+    padding: 40px 100px;
+    z-index: 10000;
+}
+header.sticky{
+padding: 5px 100px;
+background-color: #fff;
+}
+
+header.sticky ul li a{
+    color: #000;
+}
+
+header.sticky .logo{
+    color: #000;
+}
+
+
+header .logo{
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: logo_fade_in 0.6s ease;
+}
+
+header ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li{
+    position: relative;
+    list-style: none;
+}
+
+header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    animation: logo_fade_in 0.6s ease;
+}
+
+/* Front Page Css starts*/
+.Front-Page{
+    background: url(./photo/0112.jpeg);
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/*Places Css starts*/
+
+.place{
+    background: #101010;
+    width:100%;
+    padding: 100px 0px;
+}
+
+.place-title h2{
+    color:#fff;
+    font-size: 75px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.place-title p{
+    color:#fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.place-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px,auto));
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 5rem;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.row{
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.row img{
+    width: 100%;
+    border-radius: 8px;
+    display:block;
+    transition: transform 0.5s;
+}
+
+.row .layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-brand-80);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.row .layer p{
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.row .layer a{
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.row:hover .layer{
+    opacity: 1;
+}
+
+/* Let's Go Page Css starts*/
+
+.LetsGo{
+    min-height: 60vh;
+    display: grid;
+    position: relative;
+    place-items: center;
+    font-family: "Balsamiq Sans", cursive;
+    margin-bottom: 300px;
+}
+
+.flash-button{
+    font-size: 8rem;
+    display: inline-block;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    text-decoration: none;
+    color:  var(--clr-neon);
+    border: var(--clr-neon) 4px solid;
+    padding: 0.25em 1.2em;
+    border-radius: 0.25em;
+    text-shadow:0 0 0.125em hsl(0 0% 100%/ 0.5), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    position: relative;
+}
+
+.flash-button::before {
+    content: '';
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1.5em);
+    opacity: 0.7;
+}
+
+.flash-button::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    transition:  opacity 100ms linear;
+    border-radius: 0.25em;
+}
+
+.flash-button:hover::after{
+    opacity: 1;
+}
+
+
+/*Popup page Css in "Let's Go" */
+.full-screen{
+    position: absolute;
+    /* position: relative; */
+    display: inline-block;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+}
+.full-screen img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    position: absolute;
+    height: auto;
+}
+/* .full-screen img:nth-of-type(2){
+    position: absolute;
+    height: auto;
+}*/
+
+.flex-container-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden{
+    display: none;
+}
+
+.close-Popup{
+    color: #fff;
+    font-size: 42px;
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+
+.place-result{
+    font-size: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.LetsGo-title h2{
+    color:#fff;
+    font-size: 75px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.animation-image {
+    opacity: 0;
+}
+
+@keyframes fadeAnimation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-image1 {
+    animation: fadeAnimation 0.25s ease forwards;
+}
+.fade-image2 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 0.25s;
+}
+.fade-image3 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 0.5s;
+}
+.fade-image4 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 0.75s;
+}
+.fade-image5 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 1s;
+}
+.fade-image6 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 1.25s;
+}
+.fade-image7 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 1.5s;
+}
+.fade-image8 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 1.75s;
+}
+.fade-image9 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 2s;
+}
+.fade-image10 {
+    animation: fadeAnimation 0.25s ease forwards;
+    animation-delay: 2.25s;
+}
+@keyframes result-msg {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.result{
+    animation: result-msg 0.5s ease forwards;
+    animation-delay: 3s;
+}
+
+#resultMsg{
+    opacity: 0;
+    padding-bottom: 400px;
+}
+#resultBtn {
+    opacity: 0;
+}
